@@ -8,8 +8,8 @@
         </encoder>
     </appender>
     <appender name="SMTP" class="ch.qos.logback.classic.net.SMTPAppender">
-        <SMTPHost>mail.stefan-biermann.de</SMTPHost>
-        <To>strider@stefan-biermann.de</To>
+        <SMTPHost>localhost</SMTPHost>
+        <To>sb@ems-solutions.com</To>
         <From>root@stefan-biermann.de</From>
         <Subject>[public-transport-web-api] %logger{20} - %m</Subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
