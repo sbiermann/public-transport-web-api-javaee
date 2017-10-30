@@ -11,7 +11,7 @@
         <SMTPHost>mail.stefan-biermann.de</SMTPHost>
         <To>strider@stefan-biermann.de</To>
         <From>root@stefan-biermann.de</From>
-        <Subject>[hvs] %logger{20} - %m</Subject>
+        <Subject>[public-transport-web-api] %logger{20} - %m</Subject>
         <layout class="ch.qos.logback.classic.PatternLayout">
             <Pattern>%date %-5level %logger{35} - %message%n</Pattern>
         </layout>
@@ -34,6 +34,5 @@
     <root level="DEBUG">
         <appender-ref ref="FILE" />
         <appender-ref ref="SMTP" />
-        <appender-ref ref="STDOUT" />
     </root>
 </configuration>
