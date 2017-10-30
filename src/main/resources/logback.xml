@@ -31,7 +31,7 @@
     <logger name="org.apache" level="INFO"/>
     <logger name="com.ocpsoft" level="INFO"/>
     <logger name="org.picketlink" level="INFO"/>
-    <root level="DEBUG">
+    <root level="INFO">
         <appender-ref ref="FILE" />
         <appender-ref ref="SMTP" />
     </root>
