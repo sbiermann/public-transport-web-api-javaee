@@ -106,6 +106,8 @@ public class DepartureController {
                     data = lines.substring(0, lines.lastIndexOf(',')) + "]";
                 } else
                     data = convertDeparturesFHEM(efaData.findStationDepartures(from), limit);
+                if(data == null || data.isEmpty())
+                    return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
                 return Response.status(Response.Status.OK).type(MediaType.APPLICATION_JSON).entity(data).build();
             }
             return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
@@ -144,6 +146,8 @@ public class DepartureController {
     }
 
     private String convertDeparturesFHEM(StationDepartures stationDepartures, int limit) {
+        if(stationDepartures == null)
+            return null;
         StringBuffer sb = new StringBuffer();
         sb.append("[");
         Calendar cal = Calendar.getInstance();
