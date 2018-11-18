@@ -17,6 +17,4 @@ log/
 target
 phantomjsdriver.log
 application.properties
-docker
-*.iml
-
+*.war
