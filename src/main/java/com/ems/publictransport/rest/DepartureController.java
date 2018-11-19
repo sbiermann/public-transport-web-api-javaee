@@ -178,7 +178,10 @@ public class DepartureController {
             DepartureData data = new DepartureData();
             data.setTo(departure.destination.name);
             data.setToId(departure.destination.id);
-            data.setProduct(departure.line.product.toString());
+            if(departure.line.product != null)
+                data.setProduct(departure.line.product.toString());
+            else
+                data.setProduct("Unknown");
             data.setNumber(departure.line.label);
             if (departure.position != null)
                 data.setPlatform(departure.position.name);
