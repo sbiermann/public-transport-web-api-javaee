@@ -113,7 +113,7 @@ public class ProviderUtil {
             }
             if(providerName.equals("Vgn"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(HttpUrl.parse(vgnKey));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(vgnKey));
             }
             if(providerName.equals("Sh"))
             {
@@ -121,7 +121,7 @@ public class ProviderUtil {
             }
             if(providerName.equals("Gvh"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(HttpUrl.parse(gvhKey));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(gvhKey));
             }
             if(providerName.equals("Vbn"))
             {
@@ -133,7 +133,7 @@ public class ProviderUtil {
             }
             if(providerName.equals("Vrr"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(HttpUrl.parse(vrrKey));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(vrrKey));
             }
             if(providerName.equals("Avv"))
             {
@@ -141,11 +141,11 @@ public class ProviderUtil {
             }
             if(providerName.equals("Vvs"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(HttpUrl.parse(vvsKey));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(vvsKey));
             }
             if(providerName.equals("Kvv"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(HttpUrl.parse(kvvKey));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(kvvKey));
             }
             if(providerName.equals("Zvv"))
             {
