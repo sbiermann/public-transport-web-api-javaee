@@ -59,8 +59,8 @@ public class ProviderUtil {
     private String vrrKey;
 
     @Inject
-    @ConfigProperty(name = "providerkey.avv")
-    private String avvKey;
+    @ConfigProperty(name = "providerkey.avvaachen")
+    private String avvaachenKey;
 
     @Inject
     @ConfigProperty(name = "providerkey.vvs")
@@ -135,9 +135,9 @@ public class ProviderUtil {
             {
                 return  (NetworkProvider)providerClass.getDeclaredConstructor(HttpUrl.class).newInstance(HttpUrl.parse(vrrKey));
             }
-            if(providerName.equals("Avv"))
+            if(providerName.equals("AvvAachen"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(avvKey);
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(avvaachenKey);
             }
             if(providerName.equals("Vvs"))
             {
@@ -163,7 +163,7 @@ public class ProviderUtil {
             {
                 return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(seKey);
             }
-            return (NetworkProvider)providerClass.newInstance();
+            return (NetworkProvider)providerClass.getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException e) {
             return null;
         } catch (InstantiationException e) {

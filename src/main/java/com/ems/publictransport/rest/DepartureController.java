@@ -173,6 +173,8 @@ public class DepartureController {
                 break;
         }
         String lines = sb.toString();
+        if(lines.lastIndexOf(',') == -1)
+            return lines+"]";
         return lines.substring(0, lines.lastIndexOf(',')) + "]";
     }
 
