@@ -22,6 +22,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 import java.net.HttpURLConnection;
+import java.net.SocketTimeoutException;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -71,7 +72,9 @@ public class DepartureController {
                 return Response.status(Response.Status.OK).type(MediaType.APPLICATION_JSON).entity(list).build();
             }
             return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
-        } finally {
+        } catch(SocketTimeoutException e){
+            return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("Timeout, Provider "+providerName+" not responding in 15 seconds").build();
+        }finally {
             counter++;
         }
     }
@@ -111,7 +114,10 @@ public class DepartureController {
                 return Response.status(Response.Status.OK).type(MediaType.APPLICATION_JSON).entity(data).build();
             }
             return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
-        } finally {
+        }catch(SocketTimeoutException e){
+            return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("Timeout, Provider "+providerName+" not responding in 15 seconds").build();
+        }
+        finally {
             counter++;
         }
 
