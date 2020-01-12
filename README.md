@@ -84,7 +84,7 @@ Lists all departure trains of the given station
 
 ----------
 
-### GET: /connectionEsp
+### GET: /connection/esp
 Get next departure time for your trip. Lightwight for easy processing with the ESP8266  
 **Please note that only direct connections will be listed**
 
@@ -97,25 +97,11 @@ Get next departure time for your trip. Lightwight for easy processing with the E
  5. (optional) providerName -- Name of the provider, for example: Nvbw
  
 **Example:** 
-/connectionEsp?from=6906508&to=6930811&product=T&timeOffset=5
+/connection/esp?from=6906508&to=6930811&product=T&timeOffset=5
 
 ----------
 
-### GET: /departureFHEM
-Lists all departure trains of the given station in the format for FHEM. http://forum.fhem.de/index.php/topic,48255.0.html
-
- **Parameter:**
-
- 1. from -- Station id from departure station
- 2. (optional) providerName -- Name of the provider, for example: Nvbw
- 3. (optional) limit -- Limit the result set, default 10
-
-**Example:**
-/departureFHEM?from=6906508&limit=6
-
-----------
-
-### GET: /connectionRaw
+### GET: /connection/raw
 Lists all trips from one station to another with with all data the public-transport-enabler libary delivers.
 
  **Parameter:**
@@ -127,4 +113,35 @@ Lists all trips from one station to another with with all data the public-transp
  5. (optional) providerName -- Name of the provider, for example: Nvbw
  
 **Example:** 
-/connectionRaw?from=6906508&to=6930811&product=T
+/connection/raw?from=6906508&to=6930811&product=T
+
+----------
+
+### GET: /connection/FHEM
+Lists all departure trains of the given connection in the format for FHEM. http://forum.fhem.de/index.php/topic,48255.0.html
+
+ **Parameter:**
+ 
+ 1. from -- Station id from departure station
+ 2. to -- Station id from the arrival station
+ 3. product -- Product you want to use ( T = Tram, B = Bus)
+ 4. (optional) timeOffset -- Minutes e.g. you need to walk to the station. 
+ 5. (optional) providerName -- Name of the provider, for example: Nvbw
+ 3. (optional) limit -- Limit the result set, default 10
+
+**Example:**
+/connection/FHEM?from=6906508&to=6930811&product=T
+
+----------
+
+### GET: /departure/FHEM
+Lists all departure trains of the given station in the format for FHEM. http://forum.fhem.de/index.php/topic,48255.0.html
+
+ **Parameter:**
+
+ 1. from -- Station id from departure station
+ 2. (optional) providerName -- Name of the provider, for example: Nvbw
+ 3. (optional) limit -- Limit the result set, default 10
+
+**Example:**
+/departure/FHEM?from=6906508&limit=6
