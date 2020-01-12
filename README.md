@@ -31,7 +31,7 @@ REST Endpoint description
 The basic url of the following endpoints are publictransportapi/rest, so for example the provider endpoint URL is, publictransportapi/rest/provider. 
 
 ### GET:  /provider
- With this endpoint you can get all existing provider which can be used as optional parameter, default provider is VAG Freiburg (Vagfr)  
+ With this endpoint you can get all existing provider which can be used as optional parameter, default provider is Nahverkehr Baden-Württemberg (Nvbw)  
  
 **Example:** 
 /provider
@@ -44,7 +44,7 @@ The basic url of the following endpoints are publictransportapi/rest, so for exa
 **Parameter:**
  
  1. q -- Name of station you want to search
- 2. (optional) providerName -- Name of the provider, for example: NvbwProvider
+ 2. (optional) providerName -- Name of the provider, for example: Nvbw
  3. (optional) locationType -- type of the locations, default: ANY, possible values. ANY, STATION, STREET, POI
 
 **Example:** 
@@ -63,7 +63,7 @@ Lists all trips from one station to another with departure time and line number.
  2. to -- Station id from the arrival station
  3. product -- Product you want to use ( T = Tram, B = Bus)
  4. (optional) timeOffset -- Minutes e.g. you need to walk to the station.
- 5. (optional) providerName -- Name of the provider, for example: NvbwProvider
+ 5. (optional) providerName -- Name of the provider, for example: Nvbw
  
 **Example:** 
 /connection?from=6906508&to=6930811&product=T
@@ -76,7 +76,7 @@ Lists all departure trains of the given station
  **Parameter:**
 
  1. from -- Station id from departure station
- 2. (optional) providerName -- Name of the provider, for example: NvbwProvider
+ 2. (optional) providerName -- Name of the provider, for example: Nvbw
  3. (optional) limit -- Limit the result set, default 10
 
 **Example:**
@@ -94,7 +94,7 @@ Get next departure time for your trip. Lightwight for easy processing with the E
  2. to -- Station id from the arrival station
  3. product -- Product you want to use ( T = Tram, B = Bus)
  4. (optional) timeOffset -- Minutes e.g. you need to walk to the station.
- 5. (optional) providerName -- Name of the provider, for example: Vagfr
+ 5. (optional) providerName -- Name of the provider, for example: Nvbw
  
 **Example:** 
 /connectionEsp?from=6906508&to=6930811&product=T&timeOffset=5
@@ -107,7 +107,7 @@ Lists all departure trains of the given station in the format for FHEM. http://f
  **Parameter:**
 
  1. from -- Station id from departure station
- 2. (optional) providerName -- Name of the provider, for example: NvbwProvider
+ 2. (optional) providerName -- Name of the provider, for example: Nvbw
  3. (optional) limit -- Limit the result set, default 10
 
 **Example:**
@@ -124,7 +124,7 @@ Lists all trips from one station to another with with all data the public-transp
  2. to -- Station id from the arrival station
  3. product -- Product you want to use ( T = Tram, B = Bus)
  4. (optional) timeOffset -- Minutes e.g. you need to walk to the station. 
- 5. (optional) providerName -- Name of the provider, for example: NvbwProvider
+ 5. (optional) providerName -- Name of the provider, for example: Nvbw
  
 **Example:** 
 /connectionRaw?from=6906508&to=6930811&product=T
