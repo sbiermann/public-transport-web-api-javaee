@@ -81,12 +81,12 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>3.8.1</version>
+            <version>3.12.6</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>logging-interceptor</artifactId>
-            <version>3.8.1</version>
+            <version>3.12.6</version>
         </dependency>
         <dependency>
             <groupId>org.json</groupId>
@@ -97,7 +97,7 @@
         <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
-            <version>23.0-android</version>
+            <version>28.1-android</version>
         </dependency>
         <dependency>
             <groupId>net.sf.kxml</groupId>
@@ -139,7 +139,7 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>sublibs/public-transport-enabler/enabler/src</source>
+                                <source>sublibs/public-transport-enabler/src</source>
                             </sources>
                         </configuration>
                     </execution>

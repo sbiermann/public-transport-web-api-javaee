@@ -3,7 +3,7 @@ package com.ems.publictransport.rest;
 import com.ems.publictransport.rest.resource.TripData;
 import com.ems.publictransport.rest.util.ProviderUtil;
 import de.schildbach.pte.NetworkProvider;
-import de.schildbach.pte.VagfrProvider;
+import de.schildbach.pte.NvbwProvider;
 import de.schildbach.pte.dto.Location;
 import de.schildbach.pte.dto.LocationType;
 import de.schildbach.pte.dto.Product;
@@ -46,7 +46,7 @@ public class ConnectionController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         Date plannedDepartureTime = new Date();
         plannedDepartureTime.setTime(new Date().getTime() + timeOffset * 60 * 1000);
         char[] products = product.toCharArray();
@@ -77,7 +77,7 @@ public class ConnectionController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         Date plannedDepartureTime = new Date();
         plannedDepartureTime.setTime(new Date().getTime() + timeOffset * 60 * 1000);
         char[] products = product.toCharArray();
@@ -112,7 +112,7 @@ public class ConnectionController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         Date plannedDepartureTime = new Date();
         char[] products = product.toCharArray();
         QueryTripsResult efaData = provider.queryTrips(new Location(LocationType.STATION, from), null, new Location(LocationType.STATION, to), plannedDepartureTime, true, Product.fromCodes(products), null, null, null, null);
@@ -152,7 +152,7 @@ public class ConnectionController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         Date plannedDepartureTime = new Date();
         plannedDepartureTime.setTime(new Date().getTime() + timeOffset * 60 * 1000);
         char[] products = product.toCharArray();
@@ -189,12 +189,14 @@ public class ConnectionController {
 
                     } else {
                         //Predicted time
-                        data.setDepartureTime(df.format((leg.departureStop.predictedDepartureTime)));
-                        data.setDepartureTimestamp(leg.departureStop.predictedDepartureTime.getTime());
+                        if(leg.departureStop.predictedDepartureTime != null) {
+                            data.setDepartureTime(df.format((leg.departureStop.predictedDepartureTime)));
+                            data.setDepartureTimestamp(leg.departureStop.predictedDepartureTime.getTime());
+                        }
                     }
 
-
-                    data.setDepartureDelay(leg.departureStop.getDepartureDelay() / 1000);
+                    if(leg.departureStop.getDepartureDelay() != null)
+                        data.setDepartureDelay(leg.departureStop.getDepartureDelay() / 1000);
 
                     list.add(data);
                 }

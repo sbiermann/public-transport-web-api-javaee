@@ -3,7 +3,7 @@ package com.ems.publictransport.rest;
 import com.ems.publictransport.rest.resource.DepartureData;
 import com.ems.publictransport.rest.util.ProviderUtil;
 import de.schildbach.pte.NetworkProvider;
-import de.schildbach.pte.VagfrProvider;
+import de.schildbach.pte.NvbwProvider;
 import de.schildbach.pte.dto.Departure;
 import de.schildbach.pte.dto.QueryDeparturesResult;
 import de.schildbach.pte.dto.StationDepartures;
@@ -147,7 +147,7 @@ public class DepartureController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         return provider;
     }
 

@@ -8,6 +8,7 @@ import org.apache.deltaspike.core.api.config.ConfigProperty;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import java.io.UnsupportedEncodingException;
 import java.lang.reflect.InvocationTargetException;
 
 
@@ -86,6 +87,10 @@ public class ProviderUtil {
     @ConfigProperty(name = "providerkey.se")
     private String seKey;
 
+    @Inject
+    @ConfigProperty(name = "providerkey.bahn")
+    private String bahnKey;
+
     public NetworkProvider getObjectForProvider(String providerName) {
         if(providerName == null || providerName.length() < 1)
             return null;
@@ -163,6 +168,10 @@ public class ProviderUtil {
             {
                 return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(seKey);
             }
+            if(providerName.equals("Db"))
+            {
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(bahnKey,"bdI8UVj40K5fvxwf".getBytes("UTF-8"));
+            }
             return (NetworkProvider)providerClass.getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException e) {
             return null;
@@ -173,6 +182,8 @@ public class ProviderUtil {
         } catch (NoSuchMethodException e) {
             return null;
         } catch (InvocationTargetException e) {
+            return null;
+        } catch (UnsupportedEncodingException e) {
             return null;
         }
     }

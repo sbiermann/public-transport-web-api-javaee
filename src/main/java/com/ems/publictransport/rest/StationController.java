@@ -2,7 +2,7 @@ package com.ems.publictransport.rest;
 
 import com.ems.publictransport.rest.util.ProviderUtil;
 import de.schildbach.pte.NetworkProvider;
-import de.schildbach.pte.VagfrProvider;
+import de.schildbach.pte.NvbwProvider;
 import de.schildbach.pte.dto.Location;
 import de.schildbach.pte.dto.LocationType;
 import de.schildbach.pte.dto.SuggestLocationsResult;
@@ -37,7 +37,7 @@ public class StationController {
         if (providerName != null) {
             provider = providerUtil.getObjectForProvider(providerName);
         } else
-            provider = new VagfrProvider();
+            provider = new NvbwProvider();
         if (provider == null)
             return Response.status(Response.Status.NOT_FOUND).entity("Provider " + providerName + " not found or can not instantiated...").build();
         try {
