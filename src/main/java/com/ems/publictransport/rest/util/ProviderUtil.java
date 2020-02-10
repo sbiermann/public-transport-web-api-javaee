@@ -91,6 +91,10 @@ public class ProviderUtil {
     @ConfigProperty(name = "providerkey.bahn")
     private String bahnKey;
 
+    @Inject
+    @ConfigProperty(name = "providerkey.nasa")
+    private String nasaKey;
+
     public NetworkProvider getObjectForProvider(String providerName) {
         if(providerName == null || providerName.length() < 1)
             return null;
@@ -167,6 +171,10 @@ public class ProviderUtil {
             if(providerName.equals("Se"))
             {
                 return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(seKey);
+            }
+            if(providerName.equals("Nasa"))
+            {
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(nasaKey);
             }
             if(providerName.equals("Db"))
             {
