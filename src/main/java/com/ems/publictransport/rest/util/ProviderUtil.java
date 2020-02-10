@@ -170,7 +170,7 @@ public class ProviderUtil {
             }
             if(providerName.equals("Db"))
             {
-                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class).newInstance(bahnKey,"bdI8UVj40K5fvxwf".getBytes("UTF-8"));
+                return  (NetworkProvider)providerClass.getDeclaredConstructor(String.class, byte[].class).newInstance(bahnKey,"bdI8UVj40K5fvxwf".getBytes("UTF-8"));
             }
             return (NetworkProvider)providerClass.getDeclaredConstructor().newInstance();
         } catch (ClassNotFoundException e) {
