@@ -7,6 +7,7 @@ import de.schildbach.pte.NvbwProvider;
 import de.schildbach.pte.dto.Departure;
 import de.schildbach.pte.dto.QueryDeparturesResult;
 import de.schildbach.pte.dto.StationDepartures;
+import de.schildbach.pte.exception.AbstractHttpException;
 import org.apache.deltaspike.core.api.config.ConfigProperty;
 
 import javax.ejb.Schedule;
@@ -72,7 +73,10 @@ public class DepartureController {
                 return Response.status(Response.Status.OK).type(MediaType.APPLICATION_JSON).entity(list).build();
             }
             return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
-        } catch(SocketTimeoutException e){
+        }catch(AbstractHttpException e){
+            return Response.status(Response.Status.BAD_REQUEST).entity("Called url: " + e.getUrl() + "\r\nResponse: " + e.getBodyPeek()).build();
+        }
+        catch(SocketTimeoutException e){
             return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("Timeout, Provider "+providerName+" not responding in 15 seconds").build();
         }finally {
             counter++;
@@ -114,6 +118,8 @@ public class DepartureController {
                 return Response.status(Response.Status.OK).type(MediaType.APPLICATION_JSON).entity(data).build();
             }
             return Response.status(Response.Status.NOT_FOUND).entity("EFA error status: " + efaData.status.name()).build();
+        }catch(AbstractHttpException e){
+            return Response.status(Response.Status.BAD_REQUEST).entity("Called url: " + e.getUrl() + "\r\nResponse: " + e.getBodyPeek()).build();
         }catch(SocketTimeoutException e){
             return Response.status(Response.Status.GATEWAY_TIMEOUT).entity("Timeout, Provider "+providerName+" not responding in 15 seconds").build();
         }
